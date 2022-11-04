@@ -41,7 +41,8 @@ class CondaBuildCdkStack(Stack):
                             type=codebuild.BuildEnvironmentVariableType.PLAINTEXT
                         )
                     },
-                    privileged=True
+                    privileged=True,
+                    compute_type=codebuild.ComputeType.LARGE
                 ),
                 install_commands=[
                     'npm install -g n aws-cdk@2.26.0',
