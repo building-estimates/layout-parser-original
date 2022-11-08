@@ -14,7 +14,7 @@
 
 import numpy as np
 from layoutparser.elements import Interval, Rectangle, Quadrilateral, TextBlock, Layout
-from layoutparser import load_json, load_dict, load_csv, load_pdf
+from layoutparser import load_json, load_dict, load_csv #, load_pdf
 
 def test_json():
 
@@ -69,20 +69,20 @@ def test_csv():
     assert _l2 == l2
     
 
-def test_pdf():
-    pdf_layout = load_pdf("tests/fixtures/io/example.pdf")
-    assert len(pdf_layout) == 1
+# def test_pdf():
+#     pdf_layout = load_pdf("tests/fixtures/io/example.pdf")
+#     assert len(pdf_layout) == 1
     
-    page_layout = pdf_layout[0]
-    for attr_name in ["width", "height", "index"]:
-        assert attr_name in page_layout.page_data
+#     page_layout = pdf_layout[0]
+#     for attr_name in ["width", "height", "index"]:
+#         assert attr_name in page_layout.page_data
 
-    assert len(set(ele.type for ele in page_layout)) == 3
-    # Only three types of font show-up in the file
+#     assert len(set(ele.type for ele in page_layout)) == 3
+#     # Only three types of font show-up in the file
     
-def test_empty_pdf():
-    pdf_layout = load_pdf("tests/fixtures/io/empty.pdf")
-    assert len(pdf_layout) == 1 # Only one page
+# def test_empty_pdf():
+#     pdf_layout = load_pdf("tests/fixtures/io/empty.pdf")
+#     assert len(pdf_layout) == 1 # Only one page
     
-    page_layout = pdf_layout[0]
-    assert len(page_layout) == 0 # No selectable tokens on the page
+#     page_layout = pdf_layout[0]
+#     assert len(page_layout) == 0 # No selectable tokens on the page
